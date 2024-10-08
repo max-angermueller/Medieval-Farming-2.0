@@ -29,6 +29,11 @@ public class ActionOnClick : MonoBehaviour
       
     }
 
+    public Item getRequirement()
+    {
+        return requItem;
+    }
+
     public Sprite[] getSprites()
     {
         return sprites;

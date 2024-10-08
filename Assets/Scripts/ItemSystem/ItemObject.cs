@@ -9,6 +9,7 @@ public enum ItemType
     Plant,
     Placeable,
     Animal,
+    AnimalFood,
     Money,
     Storage,
     NPC,

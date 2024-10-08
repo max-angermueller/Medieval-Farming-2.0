@@ -75,8 +75,28 @@ public class Interactor : MonoBehaviour
                         
 
                     if (Input.GetKeyDown(KeyCode.F))
-                    {                    
-                        hitAction.ActivateEvents();
+                    {
+                            if (hitAction.getRequirement() != null)
+                            {
+                                if (rightHand.childCount != 0)
+                                {
+                                    Item neededItem = hitAction.getRequirement();
+                                    if (rightHand.GetComponentInChildren<Item>() != null)
+                                    {
+                                        if (rightHand.GetComponentInChildren<Item>().item == neededItem.item)
+                                        {
+                                            hitAction.ActivateEvents();
+                                            DropObjectAndDestroy();
+
+                                    }
+                                    else Debug.Log("Wrong Item!");
+
+                                    }
+
+                                }
+
+                            }else hitAction.ActivateEvents();
+
                     }
                 }
             }
@@ -145,4 +165,18 @@ public class Interactor : MonoBehaviour
             isHoldingObject = false;
         }
     }
+
+    void DropObjectAndDestroy()
+    {
+        if (currentObject != null)
+        {
+            currentObject.transform.SetParent(null);  // Objekt vom Spieler trennen
+            Destroy(currentObject);
+
+            currentObject = null;
+            isHoldingObject = false;
+        }
+    }
+
+
 }

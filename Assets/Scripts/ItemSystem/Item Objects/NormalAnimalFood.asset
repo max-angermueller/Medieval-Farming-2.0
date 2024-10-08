@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b1b9d225f798a43b36d46bf3bcd71d, type: 3}
-  m_Name: AnimalFood
+  m_Script: {fileID: 11500000, guid: 3e91d154b7144d64a9dffbaa0678f0de, type: 3}
+  m_Name: NormalAnimalFood
   m_EditorClassIdentifier: 
-  itemName: AnimalFood
+  itemName: NormalFood
   itemDescription: 
   itemModel: {fileID: 919132149155446097, guid: 0223e952ff583774daadef38d77082e7, type: 3}
-  itemType: 10
+  itemType: 5
   buyPrice: {x: 0, y: 0, z: 0}
   sellPrice: {x: 0, y: 0, z: 0}
   itemAmount: 0
-  isPlaceableOnGround: 1
+  isPlaceableOnGround: 0
   playSounds: 1
   dropSoundEffects: []
