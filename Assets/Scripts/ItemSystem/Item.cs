@@ -8,21 +8,16 @@ public class Item : MonoBehaviour
 
     public int ItemAmount = 1;
 
-    public GameObject parent;
-
     private AudioSource audioSource;
 
     private AudioClip[] audioClips;
     private AudioClip[] dropSounds;
     private AudioClip[] eatSounds;
 
-    public bool canBeEaten = false;
+    [SerializeField] bool canBeEaten = false;
 
-
-    //GameObject Components
     private MeshRenderer meshRenderer;
     private Material baseMaterial;
-    //Scr_Interactable interactableScript;
 
     private void Awake()
     {
@@ -73,97 +68,7 @@ public class Item : MonoBehaviour
             baseMaterial = meshRenderer.sharedMaterial;
         }
     }
-
-    public void Consume()
-    {
-        FoodObject foodObject = this.item as FoodObject;
-        if (foodObject != null)
-        {
-            if (foodObject.itemType == ItemType.Food)
-            {
-                if (canBeEaten != false)
-                {
-                    if (eatSounds != null) { playSound(eatSounds); }
-                    canBeEaten = false;
-                   // foodObject.Consume();
-                    StartCoroutine(deactivateGameObject()); //set to reusable items
-                    
-                }
-            }
-        }
-    }
-
-    private IEnumerator dissolveObject()
-    {
-        FoodObject foodObject = this.item as FoodObject;
-        if (foodObject != null)
-        {
-            Material dissolveMaterial = foodObject.dissolveMaterial;
-            if (dissolveMaterial != null)
-            {
-                if (meshRenderer != null)
-                {
-                    meshRenderer.sharedMaterial = dissolveMaterial;
-                    var material = GetComponent<Renderer>().material;
-
-                    float valueToChange = 1;
-                    float time = 0;
-                    float startValue = valueToChange;
-                    float endValue = -1;
-                    float duration = 1f; //1 second
-                    while (time < duration)
-                    {
-                        valueToChange = Mathf.Lerp(startValue, endValue, time / duration);
-                        time += Time.deltaTime;
-                        material.SetFloat("_CutoffHeight", valueToChange);
-                        yield return null;
-                    }
-                    valueToChange = endValue;
-                    dissolveMaterial.SetFloat("_CutoffHeight", valueToChange);
-                }
-            }
-
-
-        }
-    }
-
-    private IEnumerator deactivateGameObject()
-    {
-        StartCoroutine(dissolveObject());
-       /* Scr_Interactable interactableScript = gameObject.GetComponent<Scr_Interactable>();
-        if (interactableScript != null)
-        {
-            interactableScript.showOutlines = false;
-            interactableScript.canBeHeld = false;
-        }*/
-        yield return new WaitForSeconds(0.5f);
-        resetItem();
-        gameObject.SetActive(false);
-
-    }
-
-    private void resetItem()
-    {
-       /* Scr_Interactable interactableScript = gameObject.GetComponent<Scr_Interactable>();
-        if (interactableScript != null)
-        {
-            interactableScript.showOutlines = true;
-            interactableScript.canBeHeld = true;
-        }*/
-
-        if (baseMaterial != null)
-        {
-            meshRenderer.sharedMaterial = baseMaterial;
-        }
-
-        FoodObject foodObject = this.item as FoodObject;
-        if (foodObject != null)
-        {
-            canBeEaten = true;
-        }
-
-    }
-
+    
     //play sound------------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision other)
     {

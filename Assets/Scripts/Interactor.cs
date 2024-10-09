@@ -127,12 +127,9 @@ public class Interactor : MonoBehaviour
                         PickupObjectToHand(hit.collider.gameObject);
                         Debug.Log("Versuche Objekt aufzunehmen");
                     }
-                }
-                
+                }   
             }
-            
         }
-
     }
   
     // Methode zum Attach an die Hand

@@ -11,7 +11,7 @@ public class ItemDropManager : MonoBehaviour
     //private ChangeGrowthStageModel changeGrowthStageModelScript;
     private Animator animator;
     public float spawnDelay = 1.0f;
-    public bool destroyParent = true;
+    public bool destroyParent = false;
 
     private VisualEffect particleEffect;
 
@@ -138,7 +138,7 @@ public class ItemDropManager : MonoBehaviour
 
             if (item != null)
             {
-                item.transform.parent = NewInstanciatedItems.transform;
+                //item.transform.parent = NewInstanciatedItems.transform;
                 Rigidbody rb = item.GetComponent<Rigidbody>();
                 if (rb != null)
                 {

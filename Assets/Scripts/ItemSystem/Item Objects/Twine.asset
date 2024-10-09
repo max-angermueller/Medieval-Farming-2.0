@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3bb0a78adac604c916ecf8e7ee490a, type: 3}
+  m_Name: Twine
+  m_EditorClassIdentifier: 
+  itemName: Twine
+  itemDescription: 
+  itemModel: {fileID: 2944753193130153234, guid: 877fe13186a432b458543868e440946a, type: 3}
+  itemType: 10
+  buyPrice: {x: 0, y: 0, z: 0}
+  sellPrice: {x: 0, y: 0, z: 0}
+  itemAmount: 1
+  isPlaceableOnGround: 1
+  playSounds: 1
+  dropSoundEffects: []

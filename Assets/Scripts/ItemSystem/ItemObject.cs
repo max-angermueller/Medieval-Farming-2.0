@@ -13,8 +13,7 @@ public enum ItemType
     Money,
     Storage,
     NPC,
-    Workstation,
-    Bed,
+    Interactable,
     Ressource,
     Default
 }
@@ -24,10 +23,10 @@ public abstract class ItemObject : ScriptableObject
     public string itemName;
     public string itemDescription;
     public GameObject itemModel;
-    public ItemType itemType = ItemType.Default;
-    public Vector3 buyPrice;
+    public ItemType itemType;
+    public Vector3 buyPrice;  // x= Kupfer, y= Silber, z = Gold
     public Vector3 sellPrice;
-    public int itemAmount;
+    public int itemAmount = 1;
     public bool isPlaceableOnGround;
     public bool playSounds = true;
     public AudioClip[] dropSoundEffects;

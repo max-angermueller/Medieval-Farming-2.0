@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[
-    CreateAssetMenu(
-        fileName = "New Food Object",
-        menuName = "Scriptable Object System/Items/Food")
-]
+[CreateAssetMenu(fileName = "New Food Object", menuName = "Scriptable Object System/Items/Food")]
 public class FoodObject : ItemObject
 {
     public int increaseStamina;

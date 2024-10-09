@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Animalfood Object", menuName = "Scriptable Object System/AnimalFood")]
+[CreateAssetMenu(fileName = "New Animalfood Object", menuName = "Scriptable Object System/Items/AnimalFood")]
 
 public class AnimalFood : ItemObject
 {
