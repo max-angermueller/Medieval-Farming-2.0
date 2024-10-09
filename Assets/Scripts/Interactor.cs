@@ -7,16 +7,18 @@ public class Interactor : MonoBehaviour
     private RaycastHit hit;
     const float maxDistance = 10.0f;
 
-    [SerializeField] Image[] canvasImages;
+    [SerializeField] 
+    private Image[] canvasImages;
 
     [SerializeField] 
     private GameObject cam;
 
-    public Transform rightHand;  // Referenz zur rechten Hand des Spielers
+    [SerializeField]
+    private Transform rightHand;  
     
-    public LayerMask pickupLayer;  // Layer für aufhebbare Objekte (z.B. ein bestimmter Layer für Items)
+    public LayerMask pickupLayer;  // layer for collectable objects
 
-    private GameObject currentObject;  // Das aktuell aufgenommene Objekt
+    private GameObject currentObject;
     private bool isHoldingObject = false;
     private Ray forwardRay;
 
@@ -83,13 +85,19 @@ public class Interactor : MonoBehaviour
                                     Item neededItem = hitAction.getRequirement();
                                     if (rightHand.GetComponentInChildren<Item>() != null)
                                     {
-                                        if (rightHand.GetComponentInChildren<Item>().item == neededItem.item)
+                                        Item itemInHands = rightHand.GetComponentInChildren<Item>();
+                                        if (itemInHands.item == neededItem.item)
                                         {
                                             hitAction.ActivateEvents();
-                                            DropObjectAndDestroy();
+                                            Debug.Log(itemInHands.item.ItemType);
+                                            if (itemInHands.item.ItemType == ItemType.Container)
+                                            {
+                                                itemInHands.UnfillContainer();
+                                            }
+                                            else DropObjectAndDestroy();
 
-                                    }
-                                    else Debug.Log("Wrong Item!");
+                                        }
+                                        else Debug.Log("Wrong Item!");
 
                                     }
 
@@ -103,48 +111,39 @@ public class Interactor : MonoBehaviour
             
         }
 
-        // Checke, ob der Spieler das Aufnehmen-Objekt triggern möchte (z.B. per E-Taste)
-        if (Input.GetKeyDown(KeyCode.E))
+       
+        if (Input.GetKeyDown(KeyCode.E))  //Grab Item
         {
             if (isHoldingObject)
             {
-                // Wenn der Spieler ein Objekt hält, lasse es los
-                DropObject();
+               DropObject();
             }
             else if (hit.collider != null)  
             {
                 
-                if (hit.collider.gameObject.layer == Mathf.RoundToInt(Mathf.Log(pickupLayer.value, 2))) //Checken, ob das Objekt im richtigen Layer liegt, mit Mathe lol
+                if (hit.collider.gameObject.layer == Mathf.RoundToInt(Mathf.Log(pickupLayer.value, 2))) //check layer
                 {           
-                    if (isHoldingObject)
-                    {
-                        // Wenn der Spieler ein Objekt hält, lasse es los
-                        DropObject();
-                    }
-                    else
-                    {
-                        // Wenn kein Objekt gehalten wird, versuche eines aufzuheben
-                        PickupObjectToHand(hit.collider.gameObject);
-                        Debug.Log("Versuche Objekt aufzunehmen");
-                    }
-                }   
+                    PickupObjectToHand(hit.collider.gameObject);
+                    //Debug.Log("Versuche Objekt aufzunehmen");
+                }
+                   
             }
         }
     }
   
-    // Methode zum Attach an die Hand
+ 
     void PickupObjectToHand(GameObject obj)
     {
-        // Das Objekt an die Hand des Spielers anhängen
+        // snap object to players hand
         obj.transform.SetParent(rightHand);
-        obj.transform.localPosition = Vector3.zero;  // Setzt das Objekt auf die Handposition
-        obj.transform.localRotation = Quaternion.identity;  // Setzt die Rotation des Objekts zurück
+        obj.transform.localPosition = Vector3.zero;  
+        obj.transform.localRotation = Quaternion.identity;  
         obj.GetComponent<Rigidbody>().isKinematic = true;  
         currentObject = obj;  
         isHoldingObject = true;
     }
 
-    // Methode zum Loslassen des Objekts
+    
     void DropObject()
     {
         if (currentObject != null)
@@ -155,7 +154,7 @@ public class Interactor : MonoBehaviour
 
             if (rb != null)
             {
-                rb.isKinematic = false;  // Physik wieder einschalten
+                rb.isKinematic = false;  
             }
 
             currentObject = null;
@@ -167,9 +166,9 @@ public class Interactor : MonoBehaviour
     {
         if (currentObject != null)
         {
-            currentObject.transform.SetParent(null);  // Objekt vom Spieler trennen
+            currentObject.transform.SetParent(null);  
             Destroy(currentObject);
-
+            Debug.Log("Item destroyed.");
             currentObject = null;
             isHoldingObject = false;
         }

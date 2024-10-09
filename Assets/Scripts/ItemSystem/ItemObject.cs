@@ -11,7 +11,7 @@ public enum ItemType
     Animal,
     AnimalFood,
     Money,
-    Storage,
+    Container,
     NPC,
     Interactable,
     Ressource,
@@ -23,13 +23,21 @@ public abstract class ItemObject : ScriptableObject
     public string itemName;
     public string itemDescription;
     public GameObject itemModel;
-    public ItemType itemType;
+    [SerializeField]
+    private ItemType itemType;
     public Vector3 buyPrice;  // x= Kupfer, y= Silber, z = Gold
     public Vector3 sellPrice;
     public int itemAmount = 1;
     public bool isPlaceableOnGround;
     public bool playSounds = true;
     public AudioClip[] dropSoundEffects;
+
+    public ItemType ItemType
+    {
+        get { return itemType; }
+        set { itemType = value; }
+    }
 }
+
 
 

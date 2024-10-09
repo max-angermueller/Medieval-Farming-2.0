@@ -15,7 +15,7 @@ public class ActionOnClick : MonoBehaviour
 
     public void ActivateEvents()
     {
-        Debug.Log("Führe Events aus..");
+        //Debug.Log("Führe Events aus..");
         script?.Invoke();
     }
 

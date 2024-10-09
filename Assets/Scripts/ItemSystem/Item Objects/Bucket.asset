@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85fc113f009c47408411506dab3fe17, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c995ec258f19c148842a70c58c919fd, type: 3}
   m_Name: Bucket
   m_EditorClassIdentifier: 
   itemName: Bucket
-  itemDescription: For transporting water & milk
-  itemModel: {fileID: 0}
-  itemType: 1
+  itemDescription: 
+  itemModel: {fileID: 919132149155446097, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
+  itemType: 7
   buyPrice: {x: 0, y: 0, z: 0}
   sellPrice: {x: 0, y: 0, z: 0}
-  itemAmount: 0
+  itemAmount: 1
   isPlaceableOnGround: 1
   playSounds: 1
   dropSoundEffects: []
-  wear: 0

@@ -40,7 +40,7 @@ public class Item : MonoBehaviour
 
             //get Eat Sounds
             FoodObject foodObject = this.item as FoodObject;
-            if (item.itemType == ItemType.Food)
+            if (item.ItemType == ItemType.Food)
             {
                 if (audioSource != null)
                 {
@@ -68,7 +68,19 @@ public class Item : MonoBehaviour
             baseMaterial = meshRenderer.sharedMaterial;
         }
     }
-    
+
+    public void UnfillContainer()
+    {
+        if (item.ItemType == ItemType.Container)
+        {
+            if (gameObject.GetComponent<Bucket>() != null)
+            {
+                gameObject.GetComponent<Bucket>().UnfillBucket();
+            }
+            
+        }
+    }
+
     //play sound------------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision other)
     {

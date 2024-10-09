@@ -7,7 +7,7 @@ public class FillPan : MonoBehaviour
     private Animator anim;
     public bool startAnim;
     public MyEnum panType = new MyEnum();
-    // Start is called before the first frame update
+   
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();

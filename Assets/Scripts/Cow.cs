@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//importe mich!
+
 
 
 public class Cow : MonoBehaviour
@@ -38,8 +38,6 @@ public class Cow : MonoBehaviour
         snapon = false;
         time = TimeManager.hourAquivalence * 8f;
         //placeholderScr = placeholder.GetComponent<SnapToPlaceholder>();
-
-
     }
 
 
