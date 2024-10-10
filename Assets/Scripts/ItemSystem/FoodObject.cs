@@ -13,7 +13,7 @@ public class FoodObject : ItemObject
 
     public void Awake()
     {
-        ItemType = ItemType.Food;
+        itemType = ItemType.Food;
     }
 
     

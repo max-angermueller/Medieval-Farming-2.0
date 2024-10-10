@@ -25,11 +25,10 @@ public class Buttermaker : MonoBehaviour
 
     public void makeButter()
     {
-        anim.Play("Base Layer.Make", 0);
+        Debug.Log("Jetzt wird Butter gestampft");
+        anim.SetTrigger("MakeButter");
         dropButter = true;
-        //GetComponent<ItemDropManager>().dropItems(transform.position + new Vector3(0.1f, 2.2f, 0f));
-        //Instantiate(prefab, transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
+        
     }
 
-    //rb.AddRelativeForce(new Vector3(0, 3f, 0f), ForceMode.Impulse);
 }

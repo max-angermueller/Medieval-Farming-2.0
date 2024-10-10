@@ -182,24 +182,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: d0699383ff30dc14ab614c10881d9320, type: 3}
   - {fileID: 21300000, guid: da346a4ad4a84bb4c8cc406bad91fc39, type: 3}
+  - {fileID: 0}
   script:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666883552491164149}
-        m_TargetAssemblyTypeName: Bucket, Assembly-CSharp
-        m_MethodName: StartWaterAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  actionType: 0
   requItem: {fileID: 0}
+  specialRequirements: 0
 --- !u!114 &1666883552491164149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab821cf36472c3f45b460a75784e7db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAnim: 0
+  fluidType: 0
+  filledWithMilk: 0
+  filledWithWater: 0
 --- !u!114 &7867065681796479724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef67bf9fda36ff946bc9aa45590230ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 8c71cb895dc88cd4f9f2557af58651b0, type: 2}
+  item: {fileID: 0}
   ItemAmount: 1
   canBeEaten: 0

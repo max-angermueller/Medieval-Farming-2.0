@@ -7,9 +7,13 @@ using UnityEngine;
 
 public class RessourceObject : ItemObject
 {
+   
+
     public void Awake()
     {
-        ItemType = ItemType.Ressource;
+        itemType = ItemType.Ressource;
         isPlaceableOnGround = true;
     }
+   
+
 }

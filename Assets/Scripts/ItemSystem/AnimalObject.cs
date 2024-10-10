@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Animal Object", menuName = "Scriptable Object System/Animal")]
 public class AnimalObject : ItemObject{
     public void Awake(){
-        ItemType = ItemType.Animal;
+        itemType = ItemType.Animal;
     }
     
 }

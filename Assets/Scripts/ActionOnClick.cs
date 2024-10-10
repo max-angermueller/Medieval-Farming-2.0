@@ -10,6 +10,12 @@ public enum ActionType
     Interact,
     FillContainer
 }
+public enum FluidType
+{
+    None,
+    MilkContainer,
+    WaterContainer
+}
 public class ActionOnClick : MonoBehaviour
 {
 
@@ -18,7 +24,8 @@ public class ActionOnClick : MonoBehaviour
     [SerializeField]    private UnityEvent script;
     [SerializeField]    private ActionType actionType = ActionType.ConsumeObject;
     [SerializeField]    private Item requItem;
-   
+    [SerializeField]    private FluidType specialRequirements = FluidType.None;
+
 
     public void ActivateEvents()
     {
@@ -50,6 +57,10 @@ public class ActionOnClick : MonoBehaviour
     public Sprite[] getSprites()
     {
         return sprites;
+    }
+    public FluidType getSpecialRequirements()
+    {
+        return specialRequirements;
     }
 
 

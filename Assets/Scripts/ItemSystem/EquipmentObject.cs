@@ -6,6 +6,6 @@ using UnityEngine;
 public class EquipmentObject : ItemObject{
     public int wear;
     public void Awake(){
-        ItemType = ItemType.Equipment;   
+        itemType = ItemType.Equipment;   
     }
 }

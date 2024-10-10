@@ -9,7 +9,7 @@ public class ContainerObject : ItemObject
     private List<Item> storedItems;
     public void Awake()
     {
-        ItemType = ItemType.Food;
+        itemType = ItemType.Container;
     }
 
     public List<Item> StoredItems

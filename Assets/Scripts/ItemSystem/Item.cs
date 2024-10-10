@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+   
     public ItemObject item;
+    
+    [SerializeField] private string itemName;
+    [SerializeField] private string itemDescription;
+    [SerializeField] private ItemType itemType;
+    [SerializeField] private GameObject itemModel;
 
     public int ItemAmount = 1;
 
@@ -15,6 +21,7 @@ public class Item : MonoBehaviour
     private AudioClip[] eatSounds;
 
     [SerializeField] bool canBeEaten = false;
+    
 
     private MeshRenderer meshRenderer;
     private Material baseMaterial;
@@ -22,6 +29,7 @@ public class Item : MonoBehaviour
     private void Awake()
     {
         this.ItemAmount = item.itemAmount;
+        
 
         if (item.playSounds)
         {
@@ -40,7 +48,7 @@ public class Item : MonoBehaviour
 
             //get Eat Sounds
             FoodObject foodObject = this.item as FoodObject;
-            if (item.ItemType == ItemType.Food)
+            if (item.itemType == ItemType.Food)
             {
                 if (audioSource != null)
                 {
@@ -68,10 +76,11 @@ public class Item : MonoBehaviour
             baseMaterial = meshRenderer.sharedMaterial;
         }
     }
+  
 
     public bool UnfillContainer()
     {
-        if (item.ItemType == ItemType.Container)
+        if (item.itemType == ItemType.FluidContainer)
         {
             if (gameObject.GetComponent<Bucket>() != null)
             {

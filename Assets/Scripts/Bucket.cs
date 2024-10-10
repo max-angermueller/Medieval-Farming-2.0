@@ -5,10 +5,10 @@ using UnityEngine;
 public class Bucket : MonoBehaviour
 {
     private Animator anim;
-    public bool startAnim;
-
-    private bool filledWithMilk = false;
-    private bool filledWithWater = false;
+    
+    [SerializeField] private FluidType fluidType;
+    [SerializeField] private bool filledWithMilk = false;
+    [SerializeField] private bool filledWithWater = false;
 
     private bool isfilled = false;
     public bool FilledWithMilk { 
@@ -33,6 +33,15 @@ public class Bucket : MonoBehaviour
             isfilled = value;
         }
     }
+    public FluidType FluidType
+    {
+        get { return fluidType; }
+        set
+        {
+            fluidType = value;
+        }
+    }
+
 
     private Material water;
     private Material milk;
@@ -44,20 +53,26 @@ public class Bucket : MonoBehaviour
 
         milk = new Material(Shader.Find("Standard"));
         milk.color = Color.white;
-
+        
+        
         anim = GetComponent<Animator>();
-        startAnim = false;
+       
         if (filledWithWater== true)
         {
             StartWaterAnimation();
         }
         else if (filledWithMilk == true)
         {
-            StartMilkAnimation();
+            StartMilkAnimation();          
+        }
+        else
+        {
+            isfilled= false;
+            fluidType = FluidType.None;
         }
     }
 
-  
+    
 
     public void StartMilkAnimation()
     {
@@ -65,8 +80,9 @@ public class Bucket : MonoBehaviour
         transform.GetChild(1).GetComponent<MeshRenderer>().material = milk;
         filledWithMilk = true;
         filledWithWater = false;
+        fluidType = FluidType.MilkContainer;
         isfilled = true;
-        startAnim = false;
+       
     }
 
     public void StartWaterAnimation()
@@ -75,8 +91,9 @@ public class Bucket : MonoBehaviour
         transform.GetChild(1).GetComponent<MeshRenderer>().material = water;
         filledWithWater = true;
         filledWithMilk = false;
+        fluidType = FluidType.WaterContainer;
         isfilled = true;
-        startAnim = false;
+       
     }
 
     public void UnfillBucket()
@@ -84,8 +101,9 @@ public class Bucket : MonoBehaviour
         anim.SetTrigger("Unfill");
         filledWithWater = false;
         filledWithMilk = false;
+        fluidType = FluidType.None;
         isfilled = false;
-        startAnim = false;
+      
     }
 }
 

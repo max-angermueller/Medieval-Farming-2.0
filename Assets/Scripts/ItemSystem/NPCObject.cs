@@ -8,7 +8,7 @@ public class NPCObject : ItemObject{
     public bool isTrader = false;
 
     public void Awake(){
-        ItemType = ItemType.NPC;
+        itemType = ItemType.NPC;
     }
 
     

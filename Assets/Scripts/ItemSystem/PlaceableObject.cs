@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlaceableObject : ItemObject{
     
     public void Awake(){
-        ItemType = ItemType.Placeable;
+        itemType = ItemType.Placeable;
         isPlaceableOnGround = true;
     }
    

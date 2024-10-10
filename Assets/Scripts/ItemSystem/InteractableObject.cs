@@ -7,6 +7,6 @@ public class InteractableObject : ItemObject
 {
     public void Awake()
     {
-        ItemType = ItemType.Interactable;
+        itemType = ItemType.Interactable;
     }
 }

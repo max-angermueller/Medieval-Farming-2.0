@@ -26,7 +26,6 @@ public class Interactor : MonoBehaviour
     void Start()
     {
         forwardRay = new Ray(cam.transform.position, cam.transform.forward);
-        Debug.Log(canvasImages.Length);
     }
 
     // Update is called once per frame
@@ -40,12 +39,7 @@ public class Interactor : MonoBehaviour
         {
             image.enabled = false;
         }
-        
-        if (Input.GetKeyDown(KeyCode.F))  //Interagieren
-        {
-            Debug.Log(hit.collider.name);
-        }
-
+   
 
         if (hit.collider!= null)
         {
@@ -93,22 +87,28 @@ public class Interactor : MonoBehaviour
                                             switch (hitAction.GetActionType())
                                             {
                                                 case ActionType.ConsumeObject:
-                                                    if (itemInHands.item.ItemType == ItemType.Container)
-                                                    {
-                                                        if (itemInHands.UnfillContainer())
+                                                    if (itemInHands.item.itemType == ItemType.FluidContainer) //For Buckets
+                                                {
+                                                        if (rightHand.GetComponentInChildren<Bucket>()!= null) 
                                                         {
-                                                            hitAction.ActivateEvents();
-                                                        }
+                                                            if (hitAction.getSpecialRequirements() == rightHand.GetComponentInChildren<Bucket>().FluidType)
+                                                            {
+                                                                if (itemInHands.UnfillContainer())
+                                                                {
+                                                                    hitAction.ActivateEvents();
+                                                                }
+                                                            }                                                      
+                                                        }                                                        
                                                     }
                                                     else
-                                                    {
+                                                    {       //For Ressources
                                                         hitAction.ActivateEvents();
                                                         DropObjectAndDestroy();
                                                     }
                                                     break;
 
                                                 case ActionType.FillContainer:
-                                                    if (itemInHands.item.ItemType == ItemType.Container)
+                                                    if (itemInHands.item.itemType == ItemType.FluidContainer)
                                                     {
                                                         if (hit.collider.tag == "Watersource" || hit.collider.tag ==  "Milksource")
                                                         {

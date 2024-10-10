@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1728823986649934193583f68c3cc198, type: 3}
-  m_Name: Bucket
+  m_Script: {fileID: 11500000, guid: bc3bb0a78adac604c916ecf8e7ee490a, type: 3}
+  m_Name: Butter
   m_EditorClassIdentifier: 
-  itemName: Bucket
+  itemName: Butter
   itemDescription: 
-  itemModel: {fileID: 9025106242888826989, guid: 1c53513cdb54b294ca00bce5e69374d1, type: 3}
-  itemType: 8
+  itemModel: {fileID: 5140547834643050437, guid: 03d9b0a4c25bc7b45878e4c9736adfd1, type: 3}
+  itemType: 11
   buyPrice: {x: 0, y: 0, z: 0}
   sellPrice: {x: 0, y: 0, z: 0}
   itemAmount: 1
   isPlaceableOnGround: 1
   playSounds: 1
   dropSoundEffects: []
-  fluidType: 0
