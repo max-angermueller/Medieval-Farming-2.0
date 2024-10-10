@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class Interactor : MonoBehaviour
 {
@@ -88,14 +89,43 @@ public class Interactor : MonoBehaviour
                                         Item itemInHands = rightHand.GetComponentInChildren<Item>();
                                         if (itemInHands.item == neededItem.item)
                                         {
-                                            hitAction.ActivateEvents();
-                                            Debug.Log(itemInHands.item.ItemType);
-                                            if (itemInHands.item.ItemType == ItemType.Container)
+                                        //Debug.Log(itemInHands.item.ItemType);
+                                            switch (hitAction.GetActionType())
                                             {
-                                                itemInHands.UnfillContainer();
-                                            }
-                                            else DropObjectAndDestroy();
+                                                case ActionType.ConsumeObject:
+                                                    if (itemInHands.item.ItemType == ItemType.Container)
+                                                    {
+                                                        if (itemInHands.UnfillContainer())
+                                                        {
+                                                            hitAction.ActivateEvents();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        hitAction.ActivateEvents();
+                                                        DropObjectAndDestroy();
+                                                    }
+                                                    break;
 
+                                                case ActionType.FillContainer:
+                                                    if (itemInHands.item.ItemType == ItemType.Container)
+                                                    {
+                                                        if (hit.collider.tag == "Watersource" || hit.collider.tag ==  "Milksource")
+                                                        {
+                                                            hitAction.ActivateEvents();
+                                                        }
+                                                        else
+                                                        {
+                                                            itemInHands.FillContainer();
+                                                        }
+                                                    }
+                                                    break;
+
+                                                case ActionType.Interact:
+
+                                                    break;
+
+                                            }
                                         }
                                         else Debug.Log("Wrong Item!");
 

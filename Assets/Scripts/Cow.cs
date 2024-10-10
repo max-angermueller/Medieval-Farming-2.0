@@ -4,47 +4,58 @@ using UnityEngine;
 
 
 
-public class Cow : MonoBehaviour
+public class Cow : Animal
 {
-   
-    public bool hasMilk;
-    public GameObject placeholder;
+
+    private bool hasMilk;
+    
     float time;
-    public bool snapon;
-    SnapToPlaceholder placeholderScr;
+    private bool bucketIsSnapped;
+    public GameObject bucketPlaceholder;
+    private SnapToPlaceholder placeholderScr;
 
-    private void FixedUpdate()
+    public bool HasMilk
     {
-        if (placeholder != null)
-        {
-            if (placeholderScr.isSnappedOn)
-            {
-                GetComponent<Walking>().IdleWhileMilking();
-                placeholderScr.itemObject.GetComponent<MeshCollider>().isTrigger = true;
-                snapon = true;
-
-            }
-            else
-            {
-                snapon = false;
-                
-            }
-        }
+        get { return hasMilk; }
+        set { hasMilk = value; }
+    }
+    public bool BucketIsSnapped
+    {
+        get { return bucketIsSnapped; }
+        set { bucketIsSnapped = value; }
     }
 
     private void Start()
     {
+        walkingScr = GetComponent<Walking>();
         hasMilk = true;
-        snapon = false;
+        bucketIsSnapped = false;
         time = TimeManager.hourAquivalence * 8f;
         //placeholderScr = placeholder.GetComponent<SnapToPlaceholder>();
     }
+    private void FixedUpdate()
+    {
+        if (bucketPlaceholder != null)
+        {
+            if (placeholderScr.isSnappedOn)
+            {
+                GetComponent<Walking>().IdleWhileInteracting();
+                placeholderScr.itemObject.GetComponent<MeshCollider>().isTrigger = true;
+                bucketIsSnapped = true;
 
+            }
+            else
+            {
+                bucketIsSnapped = false;
+
+            }
+        }
+    }
 
     public void startMilking()
     {
 
-        if (placeholder != null)
+        if (bucketPlaceholder != null)
         {
             if (placeholderScr.isSnappedOn == true)
             {

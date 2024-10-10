@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.042313
+      value: -39.957687
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.54
+      value: -2.4099998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -113.30524
+      value: -13.305237
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8e4140d3564e643a0fa3b9162560ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -181,7 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c06ff46014864a9fbd219c3335a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: da346a4ad4a84bb4c8cc406bad91fc39, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: d0699383ff30dc14ab614c10881d9320, type: 3}
+  - {fileID: 21300000, guid: da346a4ad4a84bb4c8cc406bad91fc39, type: 3}
   script:
     m_PersistentCalls:
       m_Calls:
@@ -197,6 +199,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  requItem: {fileID: 0}
 --- !u!114 &1666883552491164149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,5 +244,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 8c71cb895dc88cd4f9f2557af58651b0, type: 2}
   ItemAmount: 1
-  parent: {fileID: 0}
   canBeEaten: 0

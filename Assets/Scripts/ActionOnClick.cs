@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+public enum ActionType
+{
+    ConsumeObject,
+    Interact,
+    FillContainer
+}
 public class ActionOnClick : MonoBehaviour
 {
+
+
     [SerializeField]    private Sprite[] sprites;
     [SerializeField]    private UnityEvent script;
+    [SerializeField]    private ActionType actionType = ActionType.ConsumeObject;
     [SerializeField]    private Item requItem;
-    void Start()
-    {
-        
-    }
+   
 
     public void ActivateEvents()
     {
@@ -28,7 +35,13 @@ public class ActionOnClick : MonoBehaviour
         else return sprites[position];
       
     }
+   
 
+    public ActionType GetActionType() 
+    { 
+        return actionType; 
+    
+    }
     public Item getRequirement()
     {
         return requItem;

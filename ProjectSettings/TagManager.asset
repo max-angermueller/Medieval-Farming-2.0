@@ -12,6 +12,7 @@ TagManager:
   - Selectable_Plant
   - Selectable_Inventory
   - Selectable_Misc
+  - Watersource
   layers:
   - Default
   - TransparentFX

@@ -69,16 +69,26 @@ public class Item : MonoBehaviour
         }
     }
 
-    public void UnfillContainer()
+    public bool UnfillContainer()
     {
         if (item.ItemType == ItemType.Container)
         {
             if (gameObject.GetComponent<Bucket>() != null)
             {
-                gameObject.GetComponent<Bucket>().UnfillBucket();
+                if (gameObject.GetComponent<Bucket>().IsFilled)
+                {
+                    gameObject.GetComponent<Bucket>().UnfillBucket();
+                    return true;
+                }
+                else Debug.Log("Bucket is empty");  
             }
-            
         }
+        return false;
+    }
+
+    public void FillContainer()
+    {
+        
     }
 
     //play sound------------------------------------------------------------------------------------------

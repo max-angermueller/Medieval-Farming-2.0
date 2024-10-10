@@ -22,6 +22,8 @@ public class Walking : MonoBehaviour
 
     private bool canRotate = true;
 
+    public bool canWalk = true;
+
     public bool canTurnAround = true;
 
     private float animationTime;
@@ -34,7 +36,7 @@ public class Walking : MonoBehaviour
 
     public GameObject nextEvolutionStep;
 
-    public bool canWalk = true;
+    
 
     void Start()
     {
@@ -50,7 +52,6 @@ public class Walking : MonoBehaviour
         player = GameObject.Find("Player");
         if (canWalk) startWalking();
 
-        //Debug.Log(Mathf.Atan2(0f, 8f) * Mathf.Rad2Deg);
         float time = TimeManager.hourAquivalence * 24f;
         //TimedAction.Create(grow, time, false, "Grow");
     }
@@ -155,7 +156,7 @@ public class Walking : MonoBehaviour
         canRotate = true;
     }
 
-    public void IdleWhileMilking()
+    public void IdleWhileInteracting()
     {
         anim.Play("Base Layer.Idle", 0);
         anim.speed = 0.6f;
@@ -226,7 +227,7 @@ public class Walking : MonoBehaviour
                 while (true)
                 {
                     if (
-                        timer > random //60f    Hier Random sp�ter
+                        timer > random //60f    
                     )
                     {
                         startWalking();
@@ -297,12 +298,12 @@ public class Walking : MonoBehaviour
             if (
                 (
                 gameObject.GetComponent<Cow>() != null &&
-                gameObject.GetComponent<Cow>().snapon == false
+                gameObject.GetComponent<Cow>().BucketIsSnapped == false
                 ) ||
                 gameObject.GetComponent<Cow>() == null
             )
             {
-                //                Debug.Log("FollowPlayer");
+              
                 if (lookAtPlayer == false)
                 {
                     speed = 1.5f;
@@ -327,9 +328,9 @@ public class Walking : MonoBehaviour
             Instantiate(nextEvolutionStep,
             transform.position,
             transform.rotation);
-
+            Destroy(gameObject);
             //Play Particle Effect
-            Destroy (gameObject);
+
         }
     }
 

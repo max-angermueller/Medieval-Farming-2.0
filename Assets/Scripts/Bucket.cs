@@ -10,6 +10,7 @@ public class Bucket : MonoBehaviour
     private bool filledWithMilk = false;
     private bool filledWithWater = false;
 
+    private bool isfilled = false;
     public bool FilledWithMilk { 
         get{ return filledWithMilk;}
         set{
@@ -24,11 +25,18 @@ public class Bucket : MonoBehaviour
             filledWithWater = value;
         }
     }
+    public bool IsFilled
+    {
+        get { return isfilled; }
+        set
+        {
+            isfilled = value;
+        }
+    }
 
     private Material water;
     private Material milk;
 
-    // Start is called before the first frame update
     void Start()
     {
         water = new Material(Shader.Find("Standard"));
@@ -57,6 +65,7 @@ public class Bucket : MonoBehaviour
         transform.GetChild(1).GetComponent<MeshRenderer>().material = milk;
         filledWithMilk = true;
         filledWithWater = false;
+        isfilled = true;
         startAnim = false;
     }
 
@@ -66,6 +75,7 @@ public class Bucket : MonoBehaviour
         transform.GetChild(1).GetComponent<MeshRenderer>().material = water;
         filledWithWater = true;
         filledWithMilk = false;
+        isfilled = true;
         startAnim = false;
     }
 
@@ -74,6 +84,7 @@ public class Bucket : MonoBehaviour
         anim.SetTrigger("Unfill");
         filledWithWater = false;
         filledWithMilk = false;
+        isfilled = false;
         startAnim = false;
     }
 }

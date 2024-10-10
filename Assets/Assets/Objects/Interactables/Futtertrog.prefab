@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c06ff46014864a9fbd219c3335a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: da346a4ad4a84bb4c8cc406bad91fc39, type: 3}
+  sprites: []
   script:
     m_PersistentCalls:
       m_Calls:
@@ -180,6 +180,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  actionType: 0
+  requItem: {fileID: 6245696611571882639, guid: 8ea3d6a3378310b4fb8bf659504eacc3, type: 3}
 --- !u!114 &2491936406518720656
 MonoBehaviour:
   m_ObjectHideFlags: 0
