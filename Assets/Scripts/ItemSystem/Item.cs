@@ -6,11 +6,6 @@ public class Item : MonoBehaviour
 {
    
     public ItemObject item;
-    
-    [SerializeField] private string itemName;
-    [SerializeField] private string itemDescription;
-    [SerializeField] private ItemType itemType;
-    [SerializeField] private GameObject itemModel;
 
     public int ItemAmount = 1;
 

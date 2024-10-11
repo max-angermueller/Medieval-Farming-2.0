@@ -22,13 +22,45 @@ public class Interactor : MonoBehaviour
     private GameObject currentObject;
     private bool isHoldingObject = false;
     private Ray forwardRay;
+    
+    private GameObject lastRaycastHit;
 
     void Start()
     {
         forwardRay = new Ray(cam.transform.position, cam.transform.forward);
     }
 
-    // Update is called once per frame
+    void changeRaycastHit(GameObject obj)
+    {
+        if (obj == null)
+        {
+            if (lastRaycastHit!= null && lastRaycastHit.GetComponent<Outlines>())
+            {
+                lastRaycastHit.GetComponent<Outlines>().enabled = false;
+            }
+        }
+        else if (obj != lastRaycastHit)  //Neues Objekt im Ray
+        {
+            if (lastRaycastHit != null && lastRaycastHit.GetComponent<Outlines>())
+            {
+                lastRaycastHit.GetComponent<Outlines>().enabled = false;
+                          
+            }
+            else if (lastRaycastHit == null && obj.GetComponent<Outlines>())
+            {
+                obj.GetComponent<Outlines>().enabled = true;
+            }
+            
+        }
+        else if (obj == lastRaycastHit)
+        {
+            if (obj.GetComponent<Outlines>())
+            {
+                obj.GetComponent<Outlines>().enabled = true;
+            }
+        }
+        lastRaycastHit = obj;
+    }
     void Update()
     {
         forwardRay = new Ray(cam.transform.position, cam.transform.forward);
@@ -39,16 +71,25 @@ public class Interactor : MonoBehaviour
         {
             image.enabled = false;
         }
-   
+
+        if (hit.collider == null)
+        {
+            changeRaycastHit(null);
+        }
+        else
+        {
+            GameObject raycastHit = hit.collider.gameObject;
+            changeRaycastHit(raycastHit);
+        }
+        
 
         if (hit.collider!= null)
         {
+            
             if (hit.collider.GetComponent<Outlines>() != null)
             {
-                Outlines outlineScr = hit.collider.GetComponent<Outlines>();
-                outlineScr.OutlineActive = true;
-                outlineScr.OnEnable();
-
+                
+                
                 if (hit.collider.GetComponent<ActionOnClick>() != null)
                 {
                     ActionOnClick hitAction = hit.collider.GetComponent<ActionOnClick>();
@@ -136,8 +177,11 @@ public class Interactor : MonoBehaviour
                             }else hitAction.ActivateEvents();
 
                     }
+
                 }
+
             }
+            
             
         }
 

@@ -69,7 +69,7 @@ public class Outlines : MonoBehaviour {
   private Color outlineColor = Color.white;
 
   [SerializeField, Range(0f, 10f)]
-  private float outlineWidth = 2f;
+  private float outlineWidth = 5f;
 
   private bool outlineActive = false;
 
@@ -84,8 +84,9 @@ public class Outlines : MonoBehaviour {
 
   [SerializeField, HideInInspector]
   private List<ListVector3> bakeValues = new List<ListVector3>();
-
+    
   private Renderer[] renderers;
+
   private Material outlineMaskMaterial;
   private Material outlineFillMaterial;
 
@@ -99,7 +100,7 @@ public class Outlines : MonoBehaviour {
     // Instantiate outline materials
     outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
     outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
-
+     
     outlineMaskMaterial.name = "OutlineMask (Instance)";
     outlineFillMaterial.name = "OutlineFill (Instance)";
 
@@ -108,8 +109,8 @@ public class Outlines : MonoBehaviour {
 
     // Apply material properties immediately
     needsUpdate = true;
-    
-  }
+    enabled = false;
+    }
 
   public void OnEnable() {
     foreach (var renderer in renderers) {
@@ -119,7 +120,7 @@ public class Outlines : MonoBehaviour {
 
       materials.Add(outlineMaskMaterial);
       materials.Add(outlineFillMaterial);
-
+      outlineActive=true;
       renderer.materials = materials.ToArray();
     }
   }
@@ -147,8 +148,7 @@ public class Outlines : MonoBehaviour {
 
       UpdateMaterialProperties();
     }
-      outlineActive = false;
-      OnDisable();
+    
   }
 
   void OnDisable() {
@@ -159,7 +159,7 @@ public class Outlines : MonoBehaviour {
 
       materials.Remove(outlineMaskMaterial);
       materials.Remove(outlineFillMaterial);
-
+      outlineActive=false;
       renderer.materials = materials.ToArray();
     }
   }

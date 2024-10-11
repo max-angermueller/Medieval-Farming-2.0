@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62b12cda59f13f45837c237ed56a10d, type: 3}
+  m_Name: RawMeat
+  m_EditorClassIdentifier: 
+  itemName: Raw Meat
+  itemDescription: 
+  itemModel: {fileID: 3075346839154087302, guid: a86a35bcf15dee245ba48be12d010c41, type: 3}
+  itemType: 0
+  buyPrice: {x: 0, y: 0, z: 0}
+  sellPrice: {x: 0, y: 0, z: 0}
+  itemAmount: 1
+  isPlaceableOnGround: 1
+  playSounds: 0
+  dropSoundEffects: []
+  increaseStamina: 0
+  eatSoundEffects: []

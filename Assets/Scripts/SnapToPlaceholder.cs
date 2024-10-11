@@ -40,7 +40,7 @@ public class SnapToPlaceholder : MonoBehaviour
             player = GameObject.Find("Player");
             if (player != null)
             {
-                mainCamera = player.transform.Find("Main Camera");
+                mainCamera = player.transform.Find("Camera");
             }
         }
 
@@ -63,7 +63,6 @@ public class SnapToPlaceholder : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         checkVisibilityOptions();
@@ -75,7 +74,7 @@ public class SnapToPlaceholder : MonoBehaviour
     {
         if (canBeManuallySnappedOn)
         {
-            if (other.gameObject.layer == 6)
+            if (other.gameObject.layer == 7)
             {
                 if (isSnappedOn == false)
                 {

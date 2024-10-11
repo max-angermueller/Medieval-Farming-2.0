@@ -7,8 +7,6 @@ public class FoodObject : ItemObject
 {
     public int increaseStamina;
 
-    public Material dissolveMaterial;
-
     public AudioClip[] eatSoundEffects;
 
     public void Awake()
